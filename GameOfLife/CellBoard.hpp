@@ -28,7 +28,7 @@ public:
 	void toggleCellAt(int x, int y);
 	
 	void randomize();
-	void update();
+	void step();
 	
 	int width();
 	int height();

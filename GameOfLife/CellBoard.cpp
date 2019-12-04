@@ -111,7 +111,7 @@ CellVector* CellBoard::newVectorOfNeighboursOf(int x, int y) {
 }
 	
 
-void CellBoard::update() {
+void CellBoard::step() {
 	
 	for (int y = 0; y < height_; ++y) {
 		for (int x = 0; x < width_; ++x) {
