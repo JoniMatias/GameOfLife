@@ -14,6 +14,11 @@
 
 class CellBoard;
 
+
+/*
+ StepCommand
+ Command for moving the Game of Life in CellBoard one step forward.
+ */
 class StepCommand: public Command {
 	
 public:

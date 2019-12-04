@@ -60,8 +60,8 @@ int CellBoard::indexOfCellAt(int x, int y) {
 
 
 void CellBoard::toggleCellAt(int x, int y) {
-	for (int ix=0; ix<width_; ++ix) {
-		for (int iy=0; iy<height_; ++iy) {
+	for (int iy=0; iy<height_; ++iy) {
+		for (int ix=0; ix<width_; ++ix) {
 			int index = indexOfCellAt(ix, iy);
 			CellModel currentCell = currentCells_->at(index);
 			if (x == ix && y == iy) {

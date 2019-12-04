@@ -6,14 +6,14 @@
 //  Copyright © 2019 Joni Rajala. All rights reserved.
 //
 
-#include "View.hpp"
+#include "TerminalView.hpp"
 #include "CellBoard.hpp"
 
 #include <cstdlib>
 #include <iostream>
 
 
-void View::drawBoard(CellBoard* board) {
+void TerminalView::drawBoard(CellBoard* board) {
 	
 	std::system("clear");
 	
@@ -28,12 +28,12 @@ void View::drawBoard(CellBoard* board) {
 	
 }
 
-char View::charForStatus(CellModel::Status status) {
+char TerminalView::charForStatus(CellModel::Status status) {
 	switch (status) {
 		case CellModel::Status::kAlive:
 			return 'O'; break;
 		case CellModel::Status::kDead:
-			return ' '; break;
+			return '.'; break;
 		default:
 			return 'E'; break;
 	}

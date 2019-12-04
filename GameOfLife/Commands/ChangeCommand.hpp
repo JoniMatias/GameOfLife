@@ -14,6 +14,10 @@
 
 class CellBoard;
 
+/*
+ ChangeCommand
+ Command for changing one cell in CellBoard to its opposite value.
+ */
 class ChangeCommand: public Command {
 	
 public:

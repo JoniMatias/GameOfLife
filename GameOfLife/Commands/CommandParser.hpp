@@ -11,15 +11,21 @@
 
 #include <stdio.h>
 #include <string>
+#include <vector>
 
 #include "Command.hpp"
 
 class CellBoard;
 
-
+/*
+ CommandParser
+ Factory for creating Command object from user inputted strings.
+ Parses the string, determines which kind of Command should be generated and returns that Command.
+ @returns: a pointer to a generated Command. Receiver is responsible for destroying the object.
+ */
 class CommandParser {
-	
-	static Command* getCommandFromString(std::string input, CellBoard* board);
+public:
+	static Command* newCommandFromString(std::string input, CellBoard* board);
 	
 };
 

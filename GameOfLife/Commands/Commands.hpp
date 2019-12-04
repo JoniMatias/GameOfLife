@@ -12,6 +12,5 @@
 #include "CommandParser.hpp"
 #include "ChangeCommand.hpp"
 #include "StepCommand.hpp"
-#include "NoopCommand.hpp"
 
 #endif /* Commands_hpp */

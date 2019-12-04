@@ -7,25 +7,31 @@
 //
 
 #include "CommandParser.hpp"
+#include <cstdlib>
 #include <string>
-#include <sstream>
-
+#include <vector>
 
 #include "Commands.hpp"
+#include "StringFuncs.hpp"
 
 
-Command* CommandParser::getCommandFromString(std::string input, CellBoard* board) {
+Command* CommandParser::newCommandFromString(std::string input, CellBoard* board) {
 	
 	if (input.length() == 0) {
 		return new StepCommand(board);
 	} else {
 		if (std::all_of(input.begin(), input.end(), [](char c){ return isdigit(c) || c == ' '; })) {
-			
+			std::vector<std::string> components = splitString(input, ' ');
+			if (components.size() == 2) {
+				int x = stoi(components[0]);
+				int y = stoi(components[1]);
+
+				return new ChangeCommand(x, y, board);
+			}
 		}
 	}
 	
-	return new NoopCommand();
+	return nullptr;
 	
 }
-
 

@@ -14,8 +14,8 @@
 
 /*
  Command
- Stub implementation for base class for Game of Life Commands for user.
- Is created such a way that undo could be implemented later.
+ Stub implementation for base class for Commands that user can give.
+ Is created such a way that it is easily expandable to include undo funtionality.
  */
 class Command {
 	
