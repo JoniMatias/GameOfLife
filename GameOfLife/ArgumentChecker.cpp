@@ -10,6 +10,7 @@
 
 #include <climits>
 #include <iostream>
+#include <fstream>
 
 #include "StringFuncs.hpp"
 
@@ -17,7 +18,7 @@
 
 arguments::Arguments arguments::parseArgumentsFromArray(int argc, const char * argv[]) {
 	
-	if (argc != 3) {
+	if (argc < 3) {
 		std::cout << "Needs width and height as parameters." << std::endl;
 		return arguments::Arguments(0, 0, false);
 	}
@@ -39,6 +40,24 @@ arguments::Arguments arguments::parseArgumentsFromArray(int argc, const char * a
 	}
 	
 	return arguments::Arguments(width, height, true);
+}
+
+
+std::vector<std::string> arguments::parseCommandFileFromArgs(int argc, const char* argv[]) {
+	
+	std::vector<std::string> commandVector;
+	
+	if (argc == 4) {
+		std::string filename = std::string(argv[3]);
+		std::ifstream filestream(filename);
+		
+		std::string line;
+		while (getline(filestream, line)) {
+			commandVector.push_back(line);
+		}
+	}
+	
+	return commandVector;
 }
 
 bool arguments::isBoardSizeValid(long width, long height) {

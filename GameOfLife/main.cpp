@@ -16,22 +16,20 @@
 #include "ArgumentChecker.hpp"
 
 
-bool isBoardSizeValid(long width, long height) {
-	
-	if (width == 0 || width == LONG_MAX || width == LONG_MIN) {
-		return false;
-	} else if (height == 0 || height == LONG_MAX || height == LONG_MIN) {
-		return false;
+void parseAndPerformCommand(std::string str, CellBoard* board) {
+	CommandParser parser;
+	Command* command = parser.newCommandFromString(str, board);
+	if (command != nullptr) {
+		command->perform();
+		delete command;
 	}
-	
-	return true;
-	
 }
 
 
 int main(int argc, const char * argv[]) {
 	
 	arguments::Arguments args = arguments::parseArgumentsFromArray(argc, argv);
+	std::vector<std::string> lines = arguments::parseCommandFileFromArgs(argc, argv);
 	
 	if (args.isValid() == false) {
 		return 1;
@@ -39,21 +37,20 @@ int main(int argc, const char * argv[]) {
 	
 	CellBoard board = CellBoard((int)args.width(), (int)args.height());
 	TerminalView view;
-	CommandParser parser;
-	board.randomize();
+	
+	
+	for (std::string line : lines) {
+		parseAndPerformCommand(line, &board);
+	}
 	
 	while (true) {
-		
 		view.drawBoard(&board);
+		std::cout << "Prompt > ";
 		
 		std::string input;
 		std::getline(std::cin, input);
 		
-		Command* command = parser.newCommandFromString(input, &board);
-		if (command != nullptr) {
-			command->perform();
-			delete command;
-		}
+		parseAndPerformCommand(input, &board);
 	}
 	
 	

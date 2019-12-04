@@ -10,7 +10,8 @@
 #define ArgumentChecker_hpp
 
 #include <stdio.h>
-
+#include <vector>
+#include <string>
 
 /*
  arguments namespace
@@ -30,7 +31,11 @@ namespace arguments {
 		bool isValid() { return valid_; };
 	};
 
+//Reads CLI arguments and looks for width and height for the CellBoard.
 Arguments parseArgumentsFromArray(int argc, const char * argv[]);
+
+//Reads CLI arguments for a file, and returns all its lines so that they can be parsed later.
+std::vector<std::string> parseCommandFileFromArgs(int argc, const char* argv[]);
 
 bool isBoardSizeValid(long width, long height);
 
