@@ -14,7 +14,7 @@
 
 /*
 	CellBoard
-	Model for storing and updating cells for Convay's Game of Life.
+	Model for storing and updating cells for Convay's Game of Life. Contains the business logic for updating said cells.
 */
 
 using CellVector = std::vector<CellModel>;
@@ -37,9 +37,11 @@ public:
 	
 private:
 	
+	//The buffer vectors for storing current cells and an empty vector for next cells.
 	CellVector cells1_;
 	CellVector cells2_;
 	
+	//Pointers to correct cell vectors. These will be swapped when necessary.
 	CellVector* currentCells_;
 	CellVector* nextCells_;
 	

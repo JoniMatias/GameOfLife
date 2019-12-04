@@ -60,18 +60,19 @@ int CellBoard::indexOfCellAt(int x, int y) {
 
 
 void CellBoard::toggleCellAt(int x, int y) {
-	for (int iy=0; iy<height_; ++iy) {
-		for (int ix=0; ix<width_; ++ix) {
-			int index = indexOfCellAt(ix, iy);
-			CellModel currentCell = currentCells_->at(index);
-			if (x == ix && y == iy) {
-				CellModel::Status newStatus = currentCell.status() == CellModel::Status::kDead ? CellModel::Status::kAlive : CellModel::Status::kDead;
-				CellModel newModel = CellModel(newStatus);
-				nextCells_->push_back(newModel);
-			} else {
-				CellModel newModel = CellModel(currentCell.status());
-				nextCells_->push_back(newModel);
-			}
+	int parameterIndex = indexOfCellAt(x, y);
+	
+	for (int i=0; i<currentCells_->size(); ++i) {
+		CellModel currentCell = currentCells_->at(i);
+		
+		if (i == parameterIndex) {
+			CellModel::Status newStatus = currentCell.status() == CellModel::Status::kDead ? CellModel::Status::kAlive : CellModel::Status::kDead;
+			CellModel newModel = CellModel(newStatus);
+			nextCells_->push_back(newModel);
+			
+		} else {
+			CellModel newModel = CellModel(currentCell.status());
+			nextCells_->push_back(newModel);
 		}
 	}
 	
