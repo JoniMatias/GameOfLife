@@ -21,7 +21,7 @@ Command* CommandParser::newCommandFromString(std::string input, CellBoard* board
 		return new StepCommand(board);
 	} else {
 		if (std::all_of(input.begin(), input.end(), [](char c){ return isdigit(c) || c == ' '; })) {
-			std::vector<std::string> components = splitString(input, ' ');
+			std::vector<std::string> components = stringfuncs::splitString(input, ' ');
 			if (components.size() == 2) {
 				int x = stoi(components[0]);
 				int y = stoi(components[1]);

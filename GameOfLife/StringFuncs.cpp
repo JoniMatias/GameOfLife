@@ -10,7 +10,7 @@
 
 
 
-std::vector<std::string> splitString(std::string string, char delimiter) {
+std::vector<std::string> stringfuncs::splitString(std::string string, char delimiter) {
 	
 	std::string::iterator it = string.begin()-1;
 	
@@ -27,4 +27,13 @@ std::vector<std::string> splitString(std::string string, char delimiter) {
 	
 	return substringVector;
 	
+}
+
+
+bool stringfuncs::stringContainsOnlyNumbers(std::string str) {
+	return std::all_of(str.begin(), str.end(), [](char c){ return isdigit(c); });
+}
+
+bool stringfuncs::stringContainsOnlyNumbersAndSpaces(std::string str) {
+	return std::all_of(str.begin(), str.end(), [](char c){ return isdigit(c) || c == ' '; });
 }

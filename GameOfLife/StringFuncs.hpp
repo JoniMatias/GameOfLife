@@ -12,6 +12,11 @@
 #include <vector>
 #include <string>
 
-std::vector<std::string> splitString(std::string string, char delimiter);
+namespace stringfuncs {
+	std::vector<std::string> splitString(std::string string, char delimiter);
+
+bool stringContainsOnlyNumbers(std::string srt);
+bool stringContainsOnlyNumbersAndSpaces(std::string str);
+}
 
 #endif /* StringFuncs_hpp */

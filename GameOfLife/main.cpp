@@ -13,6 +13,7 @@
 #include "CellBoard.hpp"
 #include "TerminalView.hpp"
 #include "CommandParser.hpp"
+#include "ArgumentChecker.hpp"
 
 
 bool isBoardSizeValid(long width, long height) {
@@ -30,19 +31,13 @@ bool isBoardSizeValid(long width, long height) {
 
 int main(int argc, const char * argv[]) {
 	
-	if (argc != 3) {
-		std::cout << "Needs width and height as parameters." << std::endl;
-		return 1;
-	}
-	long width  = strtol(argv[1], nullptr, 10);
-	long height = strtol(argv[2], nullptr, 10);
+	arguments::Arguments args = arguments::parseArgumentsFromArray(argc, argv);
 	
-	if (isBoardSizeValid(width, height) == false) {
-		std::cout << "Invalid width and height parameters." << std::endl;
+	if (args.isValid() == false) {
 		return 1;
 	}
 	
-	CellBoard board = CellBoard((int)width, (int)height);
+	CellBoard board = CellBoard((int)args.width(), (int)args.height());
 	TerminalView view;
 	CommandParser parser;
 	board.randomize();
