@@ -34,9 +34,7 @@ void mainLoop(CellBoard* board, TerminalView view) {
 		view.drawBoard(board);
 		
 		while (command == nullptr) {
-			std::cout << "Prompt > ";
-			std::string input;
-			std::getline(std::cin, input);
+			std::string input = view.promptInput();
 			command = parser.newCommandFromString(input, board);
 		}
 		

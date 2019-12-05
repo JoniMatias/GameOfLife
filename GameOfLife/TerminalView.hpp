@@ -10,6 +10,7 @@
 #define TerminalView_hpp
 
 #include <stdio.h>
+#include <string>
 #include "CellModel.hpp"
 
 class CellBoard;
@@ -23,6 +24,7 @@ class TerminalView {
 public:
 	
 	void drawBoard(CellBoard* board);
+	std::string promptInput();
 	
 private:
 	char charForStatus(CellModel::Status status);

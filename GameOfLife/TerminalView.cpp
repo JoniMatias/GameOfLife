@@ -28,6 +28,14 @@ void TerminalView::drawBoard(CellBoard* board) {
 	
 }
 
+std::string TerminalView::promptInput() {
+	std::cout << "Prompt > ";
+	std::string input;
+	std::getline(std::cin, input);
+	return input;
+}
+
+
 char TerminalView::charForStatus(CellModel::Status status) {
 	switch (status) {
 		case CellModel::Status::kAlive:
