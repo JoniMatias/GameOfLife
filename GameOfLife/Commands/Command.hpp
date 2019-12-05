@@ -21,6 +21,7 @@ class Command {
 	
 public:
 	virtual void perform();
+	virtual bool isFinished();
 	
 protected:
 	Command();

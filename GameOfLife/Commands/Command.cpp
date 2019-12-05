@@ -16,3 +16,7 @@ Command::Command() {
 void Command::perform() {
 	
 }
+
+bool Command::isFinished() {
+	return true;
+}

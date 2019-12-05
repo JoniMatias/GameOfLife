@@ -12,5 +12,7 @@
 #include "CommandParser.hpp"
 #include "ChangeCommand.hpp"
 #include "StepCommand.hpp"
+#include "PlayCommand.hpp"
+#include "RandomizeCommand.hpp"
 
 #endif /* Commands_hpp */

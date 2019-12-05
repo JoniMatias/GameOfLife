@@ -25,6 +25,30 @@ void parseAndPerformCommand(std::string str, CellBoard* board) {
 	}
 }
 
+void mainLoop(CellBoard* board, TerminalView view) {
+	
+	CommandParser parser;
+	Command* command = nullptr;
+	
+	while (true) {
+		view.drawBoard(board);
+		
+		while (command == nullptr) {
+			std::cout << "Prompt > ";
+			std::string input;
+			std::getline(std::cin, input);
+			command = parser.newCommandFromString(input, board);
+		}
+		
+		command->perform();
+		
+		if (command->isFinished()) {
+			delete command;
+			command = nullptr;
+		}
+	}
+}
+
 
 int main(int argc, const char * argv[]) {
 	
@@ -38,21 +62,11 @@ int main(int argc, const char * argv[]) {
 	CellBoard board = CellBoard((int)args.width(), (int)args.height());
 	TerminalView view;
 	
-	
 	for (std::string line : lines) {
 		parseAndPerformCommand(line, &board);
 	}
 	
-	while (true) {
-		view.drawBoard(&board);
-		std::cout << "Prompt > ";
-		
-		std::string input;
-		std::getline(std::cin, input);
-		
-		parseAndPerformCommand(input, &board);
-	}
-	
+	mainLoop(&board, view);
 	
 	return 0;
 }
