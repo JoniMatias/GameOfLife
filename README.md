@@ -14,6 +14,6 @@ These have to be written in order
 ## Commands
 
 After each step, the program prompts the user for a command. User can give two kinds of commands:
-* Step command is given by leaving the prompt empty, and just pressing enter.
+* Step command is given by leaving the prompt empty, and just pressing enter. This moves the game of life one step forward.
 * Toggle command, where user toggles a single cell from dead to alive or vice versa can be given by giving the 0-indexed coordinates for that cell, separated by space.
   * i.e. Command "2 3" would toggle the cell at coordinates (2,3)
