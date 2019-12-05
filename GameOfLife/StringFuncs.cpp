@@ -7,6 +7,7 @@
 //
 
 #include "StringFuncs.hpp"
+#include <algorithm>
 
 
 

@@ -20,7 +20,7 @@ Command* CommandParser::newCommandFromString(std::string input, CellBoard* board
 	if (input.length() == 0) {
 		return new StepCommand(board);
 	} else {
-		if (std::all_of(input.begin(), input.end(), [](char c){ return isdigit(c) || c == ' '; })) {
+		if (stringfuncs::stringContainsOnlyNumbersAndSpaces(input)) {
 			std::vector<std::string> components = stringfuncs::splitString(input, ' ');
 			if (components.size() == 2) {
 				int x = stoi(components[0]);
