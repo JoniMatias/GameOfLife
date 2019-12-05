@@ -3,7 +3,7 @@ A simple CLI program that implements Convay's Game of Life.
 
 ## Compiling
 
-There is no makefile, because gcc supplied with MacOS does not support lambdas. So the only way to compile currently is to add all the files in your favourite C++ IDE, and compile them using that.
+There is no makefile, because gcc supplied with MacOS does not support lambdas. So the best way to compile currently is to clone the repository using your favourite C++ IDE, and compile them using that. If your IDE does not support cloning, and you have generate your own compile command, then I'm sorry.
 
 ## Usage of program
 
